@@ -57,5 +57,14 @@ export const Profile = styled.div`
       font-size: 12px;
       color: rgba(255, 255, 255, 0.8);
     }
+
+    button {
+      margin-top: 2px;
+      font-size: 12px;
+      color: rgba(0, 0, 0);
+      font-weight: bold;
+      background: none;
+      border: 0;
+    }
   }
 `;

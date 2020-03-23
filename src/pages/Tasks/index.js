@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { MdAdd, MdCheckBox, MdArrowBack, MdArrowForward } from 'react-icons/md';
-import { toast } from 'react-toastify';
-// import { format } from 'date-fns';
-// import pt from 'date-fns/locale/pt';
-// import { zonedTimeToUtc } from 'date-fns-tz';
+import { MdAdd } from 'react-icons/md';
+// import { MdAdd, MdCheckBox, MdArrowBack, MdArrowForward } from 'react-icons/md';
+// import { toast } from 'react-toastify';
+import { format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+import { zonedTimeToUtc } from 'date-fns-tz';
 
 import { Container, MenuTop, MenuTopFunc } from './styles';
 
 import api from '~/services/api';
-import history from '~/services/history';
+// import history from '~/services/history';
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -19,7 +20,29 @@ export default function Tasks() {
   useEffect(() => {
     async function loadTasks() {
       const response = await api.get('/task/id/all');
-      setTasks(response.data);
+
+      const { data } = response;
+
+      // FORMAT DATE
+      const dateFormated = data.map(task => ({
+        ...task,
+        startDateFormated: format(
+          zonedTimeToUtc(task.start_date, 'America/Sao_Paulo'),
+          "d'/'MM'/'yy",
+          {
+            locale: pt,
+          }
+        ),
+        endDateFormated: format(
+          zonedTimeToUtc(task.end_date, 'America/Sao_Paulo'),
+          "d'/'MM'/'yy",
+          {
+            locale: pt,
+          }
+        ),
+      }));
+
+      setTasks(dateFormated);
     }
 
     loadTasks();
@@ -57,18 +80,18 @@ export default function Tasks() {
           {tasks.map(task => (
             <tr key={task.id} className="trCenter">
               <td>{task.description}</td>
-              <td className="tdCenter">Renato</td>
-              <td className="tdCenter">Normal</td>
-              <td className="tdCenter">Em andamento</td>
-              <td className="tdCenter">20/04/20</td>
-              <td className="tdCenter">20/12/20</td>
+              <td className="tdCenter">{task.user.name}</td>
+              <td className="tdCenter">{task.task_type.name}</td>
+              <td className="tdCenter">{task.task_status.name}</td>
+              <td className="tdCenter">{task.startDateFormated}</td>
+              <td className="tdCenter">{task.endDateFormated}</td>
               <td className="tdCenter">
                 <button
                   className="btnEditar"
                   type="button"
                   onClick={() => handleEdit(task.id)}
                 >
-                  atualizar
+                  + detalhes
                 </button>
                 <button
                   className="btnCancelar"

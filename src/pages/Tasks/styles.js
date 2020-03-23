@@ -16,6 +16,11 @@ export const Container = styled.div`
     font-size: 14px;
     border-radius: 10px;
     padding: 30px 20px 30px 20px;
+
+    th {
+      text-align: left;
+    }
+
     td {
       padding-bottom: 10px;
       padding-top: 10px;
@@ -23,7 +28,6 @@ export const Container = styled.div`
       border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     }
     .cabecalho {
-      text-align: left;
       font-size: 18px;
     }
     .cabecalhoCenter {
@@ -38,7 +42,7 @@ export const Container = styled.div`
     .btnCancelar {
       background: none;
       border: 0;
-      color: #c71585;
+      color: rgba(200, 0, 0, 0.8);
     }
   }
   /*

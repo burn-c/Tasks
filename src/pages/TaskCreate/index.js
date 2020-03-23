@@ -114,7 +114,7 @@ export default function TaskCreate() {
         end_date,
       });
       toast.success('Tarefa cadastrada com sucesso! :)');
-      history.push('tasks');
+      history.push('/tasks');
     } catch {
       toast.error('Falha ao cadastrar tarefa, verique os dados! :(');
     }
@@ -126,7 +126,7 @@ export default function TaskCreate() {
         <MenuTop>
           <h1>Cadastro de tarefa</h1>
           <MenuTopFunc>
-            <Link className="btnVoltar" to="/tasks  ">
+            <Link className="btnVoltar" to="/tasks">
               <MdArrowBack size="25" />
               VOLTAR
             </Link>

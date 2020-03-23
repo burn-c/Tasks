@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.2);
@@ -25,7 +26,13 @@ export const Content = styled.div`
 
     a {
       font-weight: bold;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.7);
+      margin-left: 10px;
+      transition: background 0.5s;
+    &:hover {
+      color: ${lighten(1, '#FFF')};
+    }
+  }
     }
   }
 

@@ -23,7 +23,9 @@ export default function Header() {
           <Link to="/dashboard">DASHBOARD</Link>
           <Link to="/tasks">TAREFAS</Link>
           <Link to="/users">USUÁRIOS</Link>
-          <Link to="/departments">DEPARTAMENTOS</Link>
+          <Link to="/department/create">DEPARTAMENTOS</Link>
+          <Link to="/task/status/create">TAREFA STATUS</Link>
+          <Link to="/task/type/create">TAREFA TIPO</Link>
         </nav>
 
         <aside>

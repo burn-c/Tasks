@@ -11,7 +11,7 @@ import { zonedTimeToUtc } from 'date-fns-tz';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 
 import api from '~/services/api';
-// import history from '~/services/history';
+import history from '~/services/history';
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -50,7 +50,9 @@ export default function Tasks() {
 
   function handleCancel() {}
 
-  function handleEdit() {}
+  function handleEdit(id) {
+    history.push(`/task/details/${id}`);
+  }
 
   return (
     <Container>
@@ -67,7 +69,7 @@ export default function Tasks() {
       <table>
         <thead>
           <tr>
-            <th className="cabecalho">DESCRIÇÃO</th>
+            <th className="ccabecalhoCenter">DESCRIÇÃO</th>
             <th className="cabecalhoCenter">RESPONSÁVEL</th>
             <th className="cabecalhoCenter">TIPO</th>
             <th className="cabecalhoCenter">STATUS</th>

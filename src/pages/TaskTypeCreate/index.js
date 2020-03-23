@@ -13,15 +13,15 @@ const schema = Yup.object().shape({
   name: Yup.string().required('O nome do status é obrigatório!'),
 });
 
-export default function TaskStatusCreate() {
+export default function TaskTypeCreate() {
   async function handleSubmit(name) {
     try {
-      await api.post('task/status', name);
+      await api.post('task/type', name);
 
-      history.push('/task/status');
-      toast.success('Status cadastrado com sucesso! :)');
+      history.push('/task/type');
+      toast.success('Tipo cadastrado com sucesso! :)');
     } catch {
-      toast.error('Erro ao cadastrar status! :(');
+      toast.error('Erro ao cadastrar tipo! :(');
     }
   }
 
@@ -29,9 +29,9 @@ export default function TaskStatusCreate() {
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
         <MenuTop>
-          <h1>Cadastro de status da tarefa</h1>
+          <h1>Cadastro de tipo da tarefa</h1>
           <MenuTopFunc>
-            <Link className="btnVoltar" to="/task/status">
+            <Link className="btnVoltar" to="/task/type">
               <MdArrowBack size="25" />
               VOLTAR
             </Link>
@@ -43,11 +43,11 @@ export default function TaskStatusCreate() {
         </MenuTop>
         <ul>
           <li>
-            <label htmlFor="name">NOME DO STATUS</label>
+            <label htmlFor="name">NOME DO TIPO</label>
             <Input
               name="name"
               type="text"
-              placeholder="Digite o nome do status"
+              placeholder="Digite o nome do tipo"
             />
           </li>
         </ul>

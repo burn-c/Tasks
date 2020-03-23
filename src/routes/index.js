@@ -6,6 +6,7 @@ import SignIn from '~/pages/SignIn';
 
 import Dashboard from '~/pages/Dashboard';
 import Tasks from '~/pages/Tasks';
+import TaskCreate from '~/pages/TaskCreate';
 import DepartmentCreate from '~/pages/DepartmentCreate';
 import TaskStatusCreate from '~/pages/TaskStatusCreate';
 import TaskTypeCreate from '~/pages/TaskTypeCreate';
@@ -17,6 +18,7 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/tasks" component={Tasks} isPrivate />
+      <Route path="/task/create" component={TaskCreate} isPrivate />
       <Route path="/department/create" component={DepartmentCreate} isPrivate />
       <Route
         path="/task/status/create"

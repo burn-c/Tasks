@@ -10,6 +10,7 @@ import TaskCreate from '~/pages/TaskCreate';
 import DepartmentCreate from '~/pages/DepartmentCreate';
 import TaskStatusCreate from '~/pages/TaskStatusCreate';
 import TaskTypeCreate from '~/pages/TaskTypeCreate';
+import ActivityCreate from '~/pages/ActivityCreate';
 
 export default function Routes() {
   return (
@@ -19,6 +20,12 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/tasks" component={Tasks} isPrivate />
       <Route path="/task/create" component={TaskCreate} isPrivate />
+      <Route
+        path="/task/activity/create"
+        component={ActivityCreate}
+        isPrivate
+      />
+
       <Route path="/department/create" component={DepartmentCreate} isPrivate />
       <Route
         path="/task/status/create"

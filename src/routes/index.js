@@ -7,6 +7,7 @@ import SignIn from '~/pages/SignIn';
 import Dashboard from '~/pages/Dashboard';
 import Tasks from '~/pages/Tasks';
 import DepartmentCreate from '~/pages/DepartmentCreate';
+import TaskStatusCreate from '~/pages/TaskStatusCreate';
 
 export default function Routes() {
   return (
@@ -16,6 +17,11 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/tasks" component={Tasks} isPrivate />
       <Route path="/department/create" component={DepartmentCreate} isPrivate />
+      <Route
+        path="/task/status/create"
+        component={TaskStatusCreate}
+        isPrivate
+      />
     </Switch>
   );
 }

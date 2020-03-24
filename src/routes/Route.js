@@ -18,8 +18,8 @@ export default function RouteWrapper({
     return <Redirect to="/" />;
   }
 
-  if (signed && isPrivate) {
-    return <Redirect to="/tasks" />;
+  if (signed && !isPrivate) {
+    return <Redirect to="tasks" />;
   }
 
   const Layout = signed ? DefaultLayout : AuthLayout;

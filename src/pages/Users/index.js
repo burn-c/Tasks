@@ -66,14 +66,14 @@ export default function Users() {
                   type="button"
                   onClick={() => handleEdit(user.id)}
                 >
-                  + detalhes
+                  atualizar
                 </button>
                 <button
                   className="btnCancelar"
                   type="button"
                   onClick={() => handleCancel(user.id)}
                 >
-                  cancelar
+                  deletar
                 </button>
               </td>
             </tr>

@@ -5,6 +5,7 @@ import Route from './Route';
 import SignIn from '~/pages/SignIn';
 
 import Dashboard from '~/pages/Dashboard';
+import Users from '~/pages/Users';
 import Tasks from '~/pages/Tasks';
 import TaskDetails from '~/pages/TaskDetails';
 import TaskCreate from '~/pages/TaskCreate';
@@ -17,8 +18,10 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-
       <Route path="/dashboard" component={Dashboard} isPrivate />
+
+      <Route path="/users" component={Users} isPrivate />
+
       <Route path="/tasks" component={Tasks} isPrivate />
       <Route path="/task/details" component={TaskDetails} isPrivate />
       <Route path="/task/create" component={TaskCreate} isPrivate />
@@ -27,7 +30,6 @@ export default function Routes() {
         component={ActivityCreate}
         isPrivate
       />
-
       <Route path="/department/create" component={DepartmentCreate} isPrivate />
       <Route
         path="/task/status/create"

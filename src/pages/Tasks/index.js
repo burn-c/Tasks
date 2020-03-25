@@ -46,7 +46,7 @@ export default function Tasks() {
     }
 
     loadTasks();
-  }, []);
+  });
 
   function handleCancel() {}
 

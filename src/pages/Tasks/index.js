@@ -7,7 +7,6 @@ import { MdAdd } from 'react-icons/md';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { zonedTimeToUtc } from 'date-fns-tz';
-
 import { Container, MenuTop, MenuTopFunc } from './styles';
 
 import api from '~/services/api';
@@ -46,7 +45,7 @@ export default function Tasks() {
     }
 
     loadTasks();
-  });
+  }, []);
 
   function handleCancel() {}
 

@@ -27,7 +27,7 @@ export default function Users() {
     }
 
     loadTasks();
-  });
+  }, []);
 
   function handleCancel() {}
 

@@ -15,13 +15,13 @@ import api from '~/services/api';
 
 export default function TaskDetails() {
   const [activities, setActivities] = useState([]);
-  const task_id = window.location.href.slice(
-    window.location.href.indexOf('details/') + 8
-  );
 
   // LOAD ACTIVITIES
   useEffect(() => {
     async function loadActivities() {
+      const task_id = window.location.href.slice(
+        window.location.href.indexOf('details/') + 8
+      );
       const response = await api.get(`/task/activity/${task_id}`);
 
       const { data } = response;
@@ -42,7 +42,7 @@ export default function TaskDetails() {
     }
 
     loadActivities();
-  });
+  }, []);
 
   function handleCancel() {}
 

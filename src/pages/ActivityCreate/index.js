@@ -12,12 +12,11 @@ import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
 export default function ActivityCreate() {
-  const [task, setTask] = useState({});
-
+  const [task, setTask] = useState([]);
+  const user_id = useSelector(state => state.user.profile.id);
   const task_id = window.location.href.slice(
     window.location.href.indexOf('create/') + 7
   );
-  const user_id = useSelector(state => state.user.profile.id);
 
   const schema = Yup.object().shape({
     title: Yup.string()
@@ -41,7 +40,7 @@ export default function ActivityCreate() {
       }
     }
     loadTask();
-  });
+  }, [task_id]);
 
   // CREATE ACTIVITY
   async function handleSubmit({ title, description }) {

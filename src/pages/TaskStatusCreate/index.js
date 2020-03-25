@@ -32,7 +32,7 @@ export default function TaskStatusCreate() {
     }
 
     loadTaskStatus();
-  }, [taskStatus]);
+  }, []);
 
   function handleDelete() {}
 
@@ -45,6 +45,7 @@ export default function TaskStatusCreate() {
       await api.post('task/status', name);
 
       toast.success('Status cadastrado com sucesso! :)');
+
       setTaskName('');
     } catch {
       toast.error('Erro ao cadastrar status! :(');

@@ -28,17 +28,20 @@ export default function ActivityCreate() {
       .required('Digite uma descrição para atividade!'),
   });
 
-  // LOAD TASK
-  async function loadTask() {
-    const response = await api.get(`task/${task_id}`);
-
-    setTask(response.data);
-  }
-
   // LOAD ALL INPUT DATA
   useEffect(() => {
+    // LOAD TASK
+    async function loadTask() {
+      try {
+        const response = await api.get(`task/${task_id}`);
+
+        setTask(response.data);
+      } catch {
+        toast.error('Falha ao carregar atividades! :(');
+      }
+    }
     loadTask();
-  }, []);
+  });
 
   // CREATE ACTIVITY
   async function handleSubmit({ title, description }) {

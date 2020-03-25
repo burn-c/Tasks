@@ -42,7 +42,7 @@ export default function TaskDetails() {
     }
 
     loadActivities();
-  }, []);
+  });
 
   function handleCancel() {}
 

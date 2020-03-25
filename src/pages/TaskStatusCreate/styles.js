@@ -54,6 +54,46 @@ export const Container = styled.div`
   li input {
     width: 100%;
   }
+
+  table {
+    background: rgba(255, 255, 255, 0.3);
+    width: auto;
+    align-self: center;
+    margin: 30px auto 0 auto;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+
+    th {
+      text-align: left;
+      padding: 10px;
+    }
+
+    td {
+      padding: 10px;
+      margin-bottom: 0 5px 5px 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .cabecalho {
+      font-size: 18px;
+      margin: 0 10px 0 10px;
+    }
+    .cabecalhoCenter {
+      justify-content: center;
+    }
+    .btnEditar {
+      background: none;
+      border: 0;
+      margin-right: 10px;
+      color: #0033cc;
+    }
+    .btnCancelar {
+      background: none;
+      border: 0;
+      color: rgba(200, 0, 0, 0.8);
+    }
+  }
 `;
 
 export const MenuTop = styled.div`
@@ -99,9 +139,6 @@ export const MenuTop = styled.div`
     align-content: center;
     margin-left: 10px;
     justify-content: center;
-  }
-  .btnVoltar {
-    background-color: #d3d3d3;
   }
 `;
 export const MenuTopFunc = styled.div`

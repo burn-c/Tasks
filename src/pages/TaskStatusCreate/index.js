@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input } from '@rocketseat/unform';
-import { Link } from 'react-router-dom';
+
 import * as Yup from 'yup';
-import { MdArrowBack, MdCheck } from 'react-icons/md';
+import { MdCheck } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import history from '~/services/history';
+
 import api from '~/services/api';
 
 import { Container, MenuTop, MenuTopFunc } from './styles';
@@ -14,12 +14,38 @@ const schema = Yup.object().shape({
 });
 
 export default function TaskStatusCreate() {
+  const [taskStatus, setTaskStatus] = useState([]);
+  const [taskName, setTaskName] = useState('');
+
+  // LOAD TASK STATUS FROM API
+  useEffect(() => {
+    async function loadTaskStatus() {
+      try {
+        const response = await api.get('/task/status');
+
+        const { data } = response;
+
+        setTaskStatus(data);
+      } catch {
+        toast.error('Falha ao carregar status de tarefas! :(');
+      }
+    }
+
+    loadTaskStatus();
+  }, [taskStatus]);
+
+  function handleDelete() {}
+
+  function handleEdit() {
+    // LOAD DATA ON INPUT
+  }
+
   async function handleSubmit(name) {
     try {
       await api.post('task/status', name);
 
-      history.push('/task/status');
       toast.success('Status cadastrado com sucesso! :)');
+      setTaskName('');
     } catch {
       toast.error('Erro ao cadastrar status! :(');
     }
@@ -29,12 +55,8 @@ export default function TaskStatusCreate() {
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
         <MenuTop>
-          <h1>Cadastro de status da tarefa</h1>
+          <h1>Status da tarefa</h1>
           <MenuTopFunc>
-            <Link className="btnVoltar" to="/task/status">
-              <MdArrowBack size="25" />
-              VOLTAR
-            </Link>
             <button type="submit">
               <MdCheck size="25" />
               SALVAR
@@ -43,15 +65,49 @@ export default function TaskStatusCreate() {
         </MenuTop>
         <ul>
           <li>
-            <label htmlFor="name">NOME DO STATUS</label>
+            <label htmlFor="name">CADASTRAR STATUS</label>
             <Input
               name="name"
               type="text"
               placeholder="Digite o nome do status"
+              value={taskName}
+              onChange={e => setTaskName(e.target.value)}
             />
           </li>
         </ul>
       </Form>
+
+      <table>
+        <thead>
+          <tr>
+            <th className="ccabecalhoCenter">NOME</th>
+            <th className="cabecalhoCenter">AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          {taskStatus.map(task => (
+            <tr key={task.id} className="trCenter">
+              <td>{task.name}</td>
+              <td className="tdCenter">
+                <button
+                  className="btnEditar"
+                  type="button"
+                  onClick={() => handleEdit(task.id)}
+                >
+                  atualizar
+                </button>
+                <button
+                  className="btnCancelar"
+                  type="button"
+                  onClick={() => handleDelete(task.id)}
+                >
+                  deletar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </Container>
   );
 }

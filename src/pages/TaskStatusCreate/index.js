@@ -10,7 +10,9 @@ import api from '~/services/api';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome do status é obrigatório!'),
+  name: Yup.string()
+    .min(2)
+    .required('O nome do status é obrigatório!'),
 });
 
 export default function TaskStatusCreate() {
@@ -95,7 +97,7 @@ export default function TaskStatusCreate() {
                   type="button"
                   onClick={() => handleEdit(task.id)}
                 >
-                  atualizar
+                  editar
                 </button>
                 <button
                   className="btnCancelar"
